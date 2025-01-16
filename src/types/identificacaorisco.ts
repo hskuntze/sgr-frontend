@@ -1,0 +1,26 @@
+export type IdentificacaoRiscoType = {
+  id: string;
+  projeto: string;
+  contrato: string;
+  tipoRisco: string;
+  risco: string;
+  conjunto: string;
+  evento: string;
+  descricaoRisco: string;
+  causa: string;
+  dataRisco: string;
+  ano: number;
+  dataLimite: string;
+  categoria: string;
+  probabilidade: string;
+  impacto: string;
+  criticidade: number;
+  severidade: string;
+  consequencia: string;
+  tratamento: string;
+  impactoFinanceiro: string;
+  planoContingencia: string;
+  responsavelRisco: string;
+  responsavelConjunto: string;
+  status: string;
+};

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import LogotipoSGC from "assets/images/logotipo-sgc.png";
+import LogotipoSGR from "assets/images/LOGO.png";
 import Loader from "components/Loader";
 import { toast } from "react-toastify";
 import { requestBackend } from "utils/requests";
@@ -49,10 +49,7 @@ const EnviarEmail = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-form-logo">
-          <img
-            src={LogotipoSGC}
-            alt="Logotipo do Sistema Gerenciador de Capacitação"
-          />
+          <img src={LogotipoSGR} alt="Logotipo do Sistema de Gestão de Risco" />
         </div>
         <div className="login-form-content">
           <div className="login-input-group">

@@ -11,7 +11,7 @@ const Confirmar = () => {
       <Navbar />
       <div className="confirmado-container">
         <div className="confirmado-content">
-          <h5>Bem-vindo ao SGC. Realize o login.</h5>
+          <h5>Bem-vindo ao SGR. Realize o login.</h5>
         </div>
       </div>
     </>

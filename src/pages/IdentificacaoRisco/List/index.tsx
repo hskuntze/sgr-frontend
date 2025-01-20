@@ -145,17 +145,17 @@ const IdentificacaoRiscoList = () => {
         ["Evento (Descrição completa)", b.evento],
         ["Descrição do Risco", b.descricaoRisco],
         ["Causa", b.causa],
-        ["Data do Risco", formatarData(b.dataRisco)],
+        ["Data do Risco", b.dataRisco ? formatarData(b.dataRisco) : "-"],
         ["Ano", String(b.ano)],
-        ["Data Limite", formatarData(b.dataLimite)],
+        ["Data Limite", b.dataLimite ? formatarData(b.dataLimite) : "-"],
         ["Categoria", b.categoria],
         ["Probabilidade", b.probabilidade],
         ["Impacto", b.impacto],
         ["Criticidade", String(b.criticidade)],
         ["Criticidade (Severidade)", b.severidade],
         ["Tratamento", b.tratamento],
-        ["Impacto Financeiro", b.impactoFinanceiro],
-        ["Planos de Contingência", b.planoContingencia],
+        ["Impacto Financeiro", b.impactoFinanceiro ?? "-"],
+        ["Planos de Contingência", b.planoContingencia ?? "-"],
         ["Responsável pelo Risco", b.responsavelRisco],
         ["Responsável pelo Conjunto", b.responsavelConjunto],
         ["Status", b.status],
@@ -269,7 +269,7 @@ const IdentificacaoRiscoList = () => {
                   <TablePagination
                     className="table-pagination-container"
                     component="div"
-                    count={paginatedData.length}
+                    count={filteredData.length}
                     page={page}
                     onPageChange={handlePageChange}
                     rowsPerPage={rowsPerPage}

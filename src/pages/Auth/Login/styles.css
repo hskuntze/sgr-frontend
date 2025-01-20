@@ -82,7 +82,9 @@
   }
 
   .login-form-logo img {
-    width: 330px;
+    width: auto;
     height: 187px;
+    margin-right: 60px;
+    margin-bottom: 40px;
   }
 }

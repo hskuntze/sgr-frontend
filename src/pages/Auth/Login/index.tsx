@@ -9,7 +9,7 @@ import { AuthContext } from "utils/contexts/AuthContext";
 import { requestBackendLogin } from "utils/requests";
 import { saveAuthData } from "utils/storage";
 
-import LogotipoSGC from "assets/images/logotipo-sgc.png";
+import LogotipoSGR from "assets/images/LOGO.png";
 import LogotipoCTCEA from "assets/images/logo_ctcea.png";
 import LogotipoSISFRON from "assets/images/corujinhaLoginEb.png";
 import Loader from "components/Loader";
@@ -58,10 +58,7 @@ const Login = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-form-logo">
-          <img
-            src={LogotipoSGC}
-            alt="Logotipo do Sistema Gerenciador de Capacitação"
-          />
+          <img src={LogotipoSGR} alt="Logotipo do Sistema de Gestão de Risco" />
         </div>
         <div className="login-form-content">
           <div className="login-input-group">
@@ -103,8 +100,16 @@ const Login = () => {
           )}
         </div>
         <div className="login-logos">
-          <img src={LogotipoSISFRON} className="logotipo-sisfron" alt="Logotipo SISFRON" />
-          <img src={LogotipoCTCEA} className="logotipo-ctcea" alt="Logotipo SISFRON" />
+          <img
+            src={LogotipoSISFRON}
+            className="logotipo-sisfron"
+            alt="Logotipo SISFRON"
+          />
+          <img
+            src={LogotipoCTCEA}
+            className="logotipo-ctcea"
+            alt="Logotipo SISFRON"
+          />
         </div>
       </form>
       {/* <Link to="/sgr/enviaremail">

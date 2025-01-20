@@ -11,3 +11,17 @@ export const formatarData = (date: string) => {
     return "";
   }
 };
+
+/**
+ * Função que formata o perfil do usuário
+ * @param perfil
+ * @returns
+ */
+export const formatarPerfil = (perfil: string) => {
+  const perfis: { [key: string]: string } = {
+    PERFIL_ADMIN: "Administrador",
+    PERFIL_USER: "Usuário",
+  };
+
+  return perfis[perfil];
+};

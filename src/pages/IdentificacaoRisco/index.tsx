@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import IdentificacaoRiscoList from "./List";
 import IdentificacaoRiscoForm from "./Form";
+import IdentificacaoRiscoInspect from "./Inspect";
+import "./styles.css";
 
 const IdentificacaoRisco = () => {
   return (
@@ -8,6 +10,7 @@ const IdentificacaoRisco = () => {
       <Routes>
         <Route path="/" element={<IdentificacaoRiscoList />}/>
         <Route path=":id" element={<IdentificacaoRiscoForm />} />
+        <Route path="/visualizar/:id" element={<IdentificacaoRiscoInspect />} />
       </Routes>
     </section>
   );

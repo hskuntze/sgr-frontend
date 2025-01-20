@@ -216,13 +216,13 @@ const UsuarioForm = () => {
   }, [loadPostos, loadInfo, loadBdas, loadOms]);
 
   return (
-    <div className="treinamento-container">
-      <form onSubmit={handleSubmit(onSubmit)} className="treinamento-form">
-        <div className="treinamento-content">
-          <div className="treinamento-left">
+    <div className="element-container">
+      <form onSubmit={handleSubmit(onSubmit)} className="element-form">
+        <div className="element-content">
+          <div className="element-left">
             <h6 className="mt-3 ml-2">DADOS DO USUÁRIO</h6>
             {/* Tipo (civil ou militar) */}
-            <div className="treinamento-input-group treinamento-radio-input-group">
+            <div className="element-input-group element-radio-input-group">
               <span>
                 Tipo<span className="campo-obrigatorio">*</span>
               </span>
@@ -261,7 +261,7 @@ const UsuarioForm = () => {
             </div>
             {isCivil !== null && (
               <>
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control`}
@@ -274,7 +274,7 @@ const UsuarioForm = () => {
                     {errors.nome?.message}
                   </div>
                 </div>
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control`}
@@ -287,7 +287,7 @@ const UsuarioForm = () => {
                     {errors.sobrenome?.message}
                   </div>
                 </div>
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control`}
@@ -300,7 +300,7 @@ const UsuarioForm = () => {
                     {errors.funcao?.message}
                   </div>
                 </div>
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="email"
                     className={`form-control`}
@@ -314,7 +314,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {isCivil && (
-                  <div className="treinamento-input-group form-floating">
+                  <div className="element-input-group form-floating">
                     <input
                       type="text"
                       className={`form-control`}
@@ -328,7 +328,7 @@ const UsuarioForm = () => {
                     </div>
                   </div>
                 )}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control`}
@@ -341,7 +341,7 @@ const UsuarioForm = () => {
                     {errors.identidade?.message}
                   </div>
                 </div>
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <Controller
                     name="perfil.id"
                     control={control}
@@ -369,7 +369,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {/* Habilitado */}
-                <div className="treinamento-input-group treinamento-radio-input-group">
+                <div className="element-input-group element-radio-input-group">
                   <span>
                     Habilitado<span className="campo-obrigatorio">*</span>
                   </span>
@@ -405,7 +405,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {!isEditing && (
-                  <div className="treinamento-input-group form-floating">
+                  <div className="element-input-group form-floating">
                     <input
                       type="password"
                       className={`form-control`}
@@ -419,7 +419,7 @@ const UsuarioForm = () => {
                     </div>
                   </div>
                 )}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control`}
@@ -435,12 +435,12 @@ const UsuarioForm = () => {
               </>
             )}
           </div>
-          <div className="treinamento-right">
+          <div className="element-right">
             {!isCivil && isCivil !== null && (
               <>
                 <h6 className="mt-3 ml-2">DADOS DO USUÁRIO MILITAR</h6>
                 {/* Nome de guerra */}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <input
                     type="text"
                     className={`form-control ${
@@ -458,7 +458,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {/* Posto */}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <Controller
                     name="posto"
                     control={control}
@@ -488,7 +488,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {/* Brigada */}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <Controller
                     name="brigada"
                     control={control}
@@ -519,7 +519,7 @@ const UsuarioForm = () => {
                   </div>
                 </div>
                 {/* OM */}
-                <div className="treinamento-input-group form-floating">
+                <div className="element-input-group form-floating">
                   <Controller
                     name="om.codigo"
                     control={control}

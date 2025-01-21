@@ -1,4 +1,5 @@
 import Navbar from "components/Navbar";
+import Acompanhamento from "pages/Acompanhamento";
 import Admin from "pages/Admin";
 import Auth from "pages/Auth";
 import Confirmar from "pages/Confirmar";
@@ -71,6 +72,19 @@ const Routes = () => {
                 ]}
               >
                 <IdentificacaoRisco />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/sgr/acompanhamentos/*"
+            element={
+              <PrivateRoute
+                roles={[
+                  { id: 1, autorizacao: "PERFIL_ADMIN" },
+                  { id: 2, autorizacao: "PERFIL_USUARIO" },
+                ]}
+              >
+                <Acompanhamento />
               </PrivateRoute>
             }
           />

@@ -4,6 +4,7 @@ import { AxiosRequestConfig } from "axios";
 import { requestBackend } from "utils/requests";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { formatarPerfil } from "utils/functions";
 
 interface Props {
   element: User;
@@ -53,7 +54,7 @@ const UsuarioCard = ({ element, onLoad }: Props) => {
         <div className="card-content">{element.email}</div>
       </td>
       <td>
-        <div className="card-content">{element.perfis[0].autorizacao}</div>
+        <div className="card-content">{formatarPerfil(element.perfis[0].autorizacao)}</div>
       </td>
       <td>
         <div className="card-buttons">

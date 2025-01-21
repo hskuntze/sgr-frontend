@@ -151,14 +151,19 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="id-risco"
                 placeholder="ID da Identificação de Risco"
                 {...register("id", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="id-risco">ID</label>
+              <label htmlFor="id-risco">
+                ID
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.id?.message}
               </div>
@@ -166,14 +171,19 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="projeto"
                 placeholder="Projeto"
                 {...register("projeto", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="projeto">Projeto</label>
+              <label htmlFor="projeto">
+                Projeto
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.projeto?.message}
               </div>
@@ -181,14 +191,19 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="contrato"
                 placeholder="Contrato"
                 {...register("contrato", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="contrato">Contrato</label>
+              <label htmlFor="contrato">
+                Contrato
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.contrato?.message}
               </div>
@@ -255,14 +270,19 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.conjunto ? "is-invalid" : ""
+                }`}
                 id="conjunto"
                 placeholder="Conjunto"
                 {...register("conjunto", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="conjunto">Conjunto</label>
+              <label htmlFor="conjunto">
+                Conjunto
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.conjunto?.message}
               </div>
@@ -272,10 +292,15 @@ const IdentificacaoRiscoForm = () => {
                 className={`form-control ${errors.evento ? "is-invalid" : ""}`}
                 id="evento"
                 placeholder="Descreva o evento"
-                {...register("evento")}
+                {...register("evento", {
+                  required: "Campo obrigatório",
+                })}
                 rows={10}
               />
-              <label htmlFor="evento">Evento</label>
+              <label htmlFor="evento">
+                Evento
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.evento?.message}
               </div>
@@ -287,10 +312,15 @@ const IdentificacaoRiscoForm = () => {
                 }`}
                 id="descricaoRisco"
                 placeholder="Descrição do risco"
-                {...register("descricaoRisco")}
+                {...register("descricaoRisco", {
+                  required: "Campo obrigatório",
+                })}
                 rows={10}
               />
-              <label htmlFor="descricaoRisco">Descrição do risco</label>
+              <label htmlFor="descricaoRisco">
+                Descrição do risco
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.descricaoRisco?.message}
               </div>
@@ -300,15 +330,20 @@ const IdentificacaoRiscoForm = () => {
                 className={`form-control ${errors.causa ? "is-invalid" : ""}`}
                 id="causa"
                 placeholder="Causa"
-                {...register("causa")}
+                {...register("causa", {
+                  required: "Campo obrigatório",
+                })}
                 rows={10}
               />
-              <label htmlFor="causa">Causa</label>
+              <label htmlFor="causa">
+                Causa
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.causa?.message}
               </div>
             </div>
-            <div className="element-input-group form-floating">
+            <div className="element-input-group">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Controller
                   name="dataRisco"
@@ -323,7 +358,7 @@ const IdentificacaoRiscoForm = () => {
                       onChange={(date) => field.onChange(date)}
                       value={dayjs(field.value)}
                       label={`Data do risco`}
-                      className="form-control"
+                      className={`form-control ${errors.dataRisco ? "is-invalid" : ""}`}
                     />
                   )}
                 />
@@ -342,35 +377,31 @@ const IdentificacaoRiscoForm = () => {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="ano">Ano</label>
+              <label htmlFor="ano">
+                Ano
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.ano?.message}
               </div>
             </div>
-
-            <div className="element-input-group form-floating">
+            <div className="element-input-group">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Controller
                   name="dataLimite"
                   control={control}
-                  rules={{
-                    required: "Campo obrigatório",
-                  }}
                   render={({ field }) => (
                     <MobileDatePicker
                       {...field}
                       format="DD/MM/YYYY"
                       onChange={(date) => field.onChange(date)}
-                      value={dayjs(field.value)}
+                      value={dayjs(field.value) ?? ""}
                       label={`Data do limite`}
-                      className="form-control"
+                      className={`form-control`}
                     />
                   )}
                 />
               </LocalizationProvider>
-              <div className="invalid-feedback d-block">
-                {errors.dataLimite?.message}
-              </div>
             </div>
           </div>
           <div className="element-right">
@@ -478,14 +509,19 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="criticidade"
                 placeholder="Criticidade"
                 {...register("criticidade", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="criticidade">Criticidade</label>
+              <label htmlFor="criticidade">
+                Criticidade
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.criticidade?.message}
               </div>
@@ -529,10 +565,15 @@ const IdentificacaoRiscoForm = () => {
                 }`}
                 id="consequencia"
                 placeholder="Descreva a consequência"
-                {...register("consequencia")}
+                {...register("consequencia", {
+                  required: "Campo obrigatório",
+                })}
                 rows={10}
               />
-              <label htmlFor="consequencia">Consequência</label>
+              <label htmlFor="consequencia">
+                Consequência
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.consequencia?.message}
               </div>
@@ -544,10 +585,15 @@ const IdentificacaoRiscoForm = () => {
                 }`}
                 id="tratamento"
                 placeholder="Descreva o tratamento"
-                {...register("tratamento")}
+                {...register("tratamento", {
+                  required: "Campo obrigatório",
+                })}
                 rows={10}
               />
-              <label htmlFor="tratamento">Tratamento</label>
+              <label htmlFor="tratamento">
+                Tratamento
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.tratamento?.message}
               </div>
@@ -555,44 +601,45 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="impacto-financeiro"
                 placeholder="Impacto Financeiro"
-                {...register("impactoFinanceiro", {
-                  required: "Campo obrigatório",
-                })}
+                {...register("impactoFinanceiro")}
               />
-              <label htmlFor="impacto-financeiro">Impacto Financeiro</label>
-              <div className="invalid-feedback d-block">
-                {errors.impactoFinanceiro?.message}
-              </div>
+              <label htmlFor="impacto-financeiro">
+                Impacto Financeiro
+              </label>
             </div>
             <div className="element-input-group form-floating">
               <textarea
-                className={`form-control ${
-                  errors.planoContingencia ? "is-invalid" : ""
-                }`}
+                className={`form-control`}
                 id="planoContingencia"
                 placeholder="Descreva o plano de contingência"
                 {...register("planoContingencia")}
                 rows={10}
               />
-              <label htmlFor="planoContingencia">Plano de contingência</label>
-              <div className="invalid-feedback d-block">
-                {errors.planoContingencia?.message}
-              </div>
+              <label htmlFor="planoContingencia">
+                Plano de contingência
+              </label>
             </div>
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="responsavel-risco"
                 placeholder="Responsável pelo Risco"
                 {...register("responsavelRisco", {
                   required: "Campo obrigatório",
                 })}
               />
-              <label htmlFor="responsavel-risco">Responsável pelo Risco</label>
+              <label htmlFor="responsavel-risco">
+                Responsável pelo Risco
+                <span className="campo-obrigatorio">*</span>
+              </label>
               <div className="invalid-feedback d-block">
                 {errors.responsavelRisco?.message}
               </div>
@@ -600,7 +647,9 @@ const IdentificacaoRiscoForm = () => {
             <div className="element-input-group form-floating">
               <input
                 type="text"
-                className={`form-control`}
+                className={`form-control ${
+                  errors.tipoRisco ? "is-invalid" : ""
+                }`}
                 id="responsavel-conjunto"
                 placeholder="Responsável pelo Conjunto"
                 {...register("responsavelConjunto", {
@@ -609,6 +658,7 @@ const IdentificacaoRiscoForm = () => {
               />
               <label htmlFor="responsavel-conjunto">
                 Responsável pelo conjunto
+                <span className="campo-obrigatorio">*</span>
               </label>
               <div className="invalid-feedback d-block">
                 {errors.responsavelConjunto?.message}

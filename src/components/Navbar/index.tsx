@@ -76,6 +76,11 @@ const Navbar = () => {
                     Identificação de Riscos
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/sgr/acompanhamentos">
+                    Acompanhamento
+                  </Link>
+                </li>
                 {isAdmin && (
                   <li className="nav-item dropdown">
                     <button className="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown">

@@ -1,4 +1,4 @@
-import LogotipoSGC from "assets/images/logotipo-sgc.png";
+import LogotipoSGR from "assets/images/LOGO.png";
 import { AxiosRequestConfig } from "axios";
 import Loader from "components/Loader";
 import { useState } from "react";
@@ -49,7 +49,7 @@ const Recover = () => {
       params: {
         novaSenha: formData.senha,
         senhaAntiga: formData.senhaAntiga,
-      }
+      },
     };
 
     requestBackend(requestParams)
@@ -71,13 +71,10 @@ const Recover = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-form-logo">
-          <img
-            src={LogotipoSGC}
-            alt="Logotipo do Sistema Gerenciador de Capacitação"
-          />
+          <img src={LogotipoSGR} alt="Logotipo do Sistema de Gestão de Risco" />
         </div>
         <div className="login-form-content">
-        <div className="login-input-group">
+          <div className="login-input-group">
             <input
               type="password"
               id="senhaAntiga"

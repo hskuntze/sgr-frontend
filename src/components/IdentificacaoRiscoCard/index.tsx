@@ -44,14 +44,10 @@ const IdentificacaoRiscoCard = ({ element, onLoad }: Props) => {
         <div className="card-content">{element.id}</div>
       </td>
       <td>
-        <div className="card-content">
-          {element.projeto}
-        </div>
+        <div className="card-content">{element.projeto}</div>
       </td>
       <td>
-        <div className="card-content">
-          {element.contrato}
-        </div>
+        <div className="card-content">{element.contrato}</div>
       </td>
       <td>
         <div className="card-content">{element.tipoRisco}</div>
@@ -60,22 +56,21 @@ const IdentificacaoRiscoCard = ({ element, onLoad }: Props) => {
         <div className="card-content">{element.risco}</div>
       </td>
       <td>
-        <div className="card-content">
-          {element.conjunto}
-        </div>
+        <div className="card-content">{element.conjunto.nome}</div>
       </td>
       <td>
-        <div className="card-content">
-          {element.evento}
-        </div>
+        <div className="card-content">{element.evento}</div>
       </td>
       <td>
-        <div className="card-content">
-          {element.descricaoRisco}
-        </div>
+        <div className="card-content">{element.descricaoRisco}</div>
       </td>
       <td>
         <div className="card-buttons">
+          <Link to={`/sgr/identificacaoriscos/historico/${element.id}`}>
+            <button className="act-button hist-button">
+              <i className="bi bi-clock-history" />
+            </button>
+          </Link>
           <Link to={`/sgr/identificacaoriscos/visualizar/${element.id}`}>
             <button className="act-button submit-button">
               <i className="bi bi-file-earmark-text" />

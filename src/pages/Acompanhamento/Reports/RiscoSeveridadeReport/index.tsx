@@ -7,11 +7,15 @@ import { RiscoSeveridade } from "types/relatorio/riscoseveridade";
 import { requestBackend } from "utils/requests";
 
 import "./styles.css";
+import Loader from "components/Loader";
 
 const RiscoSeveridadeReport = () => {
   const [data, setData] = useState<RiscoSeveridade[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const loadData = useCallback(() => {
+    setLoading(true);
+
     const requestParams: AxiosRequestConfig = {
       url: "/identificacaoriscos/reports/riscoSeveridade",
       method: "GET",
@@ -25,7 +29,9 @@ const RiscoSeveridadeReport = () => {
       .catch((err) => {
         toast.error("Erro ao carregar dados de acompanhamento.");
       })
-      .finally(() => {});
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -33,60 +39,72 @@ const RiscoSeveridadeReport = () => {
   }, [loadData]);
 
   return (
-    <div className="severity-column-chart">
-      {data.map((item) => {
-        const options: ApexOptions = {
-          chart: {
-            type: "donut",
-          },
-          plotOptions: {
-            pie: {
-              expandOnClick: false,
-              donut: {
-                labels: {
-                  show: true,
-                  value: {
-                    formatter: (val) => {
-                      return `${val}`;
-                    },
-                  },
-                  total: {
-                    show: true,
-                    formatter: () => {
-                      return `${
-                        item.baixo + item.medio + item.alto + item.extremo
-                      }`;
+    <div>
+      {loading ? (
+        <div className="loader-div">
+          <Loader width="150px" height="150px" />
+        </div>
+      ) : (
+        <div className="severity-column-chart">
+          {data.map((item) => {
+            const options: ApexOptions = {
+              chart: {
+                type: "donut",
+              },
+              plotOptions: {
+                pie: {
+                  expandOnClick: false,
+                  donut: {
+                    labels: {
+                      show: true,
+                      value: {
+                        formatter: (val) => {
+                          return `${val}`;
+                        },
+                      },
+                      total: {
+                        show: true,
+                        formatter: () => {
+                          return `${
+                            item.baixo + item.medio + item.alto + item.extremo
+                          }`;
+                        },
+                        fontWeight: 700,
+                      },
                     },
                   },
                 },
               },
-            },
-          },
-          colors: ["#9DD755", "#F7F823", "#FCC916", "#F8222B"],
-          labels: ["Baixo", "Médio", "Alto", "Extremo"],
-          tooltip: {
-            y: {
-              formatter: (val: number) => {
-                return `${val}`;
+              colors: ["#9DD755", "#F7F823", "#FCC916", "#F8222B"],
+              labels: ["Baixo", "Médio", "Alto", "Extremo"],
+              tooltip: {
+                y: {
+                  formatter: (val: number) => {
+                    return `${val}`;
+                  },
+                },
               },
-            },
-          },
-        };
+            };
 
-        const series = [item.baixo, item.medio, item.alto, item.extremo];
+            const series = [item.baixo, item.medio, item.alto, item.extremo];
 
-        return (
-          <div key={item.risco} style={{ width: "400px", textAlign: "center" }}>
-            <h5>{item.risco}</h5>
-            <ReactApexChart
-              options={options}
-              series={series}
-              type="donut"
-              height={300}
-            />
-          </div>
-        );
-      })}
+            return (
+              <div
+                key={item.risco}
+                style={{ width: "400px", textAlign: "center" }}
+              >
+                <h5>{item.risco}</h5>
+                <ReactApexChart
+                  options={options}
+                  series={series}
+                  type="donut"
+                  height={300}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

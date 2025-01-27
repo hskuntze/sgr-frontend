@@ -80,6 +80,16 @@
   background-color: #791605e7;
 }
 
+.hist-button {
+  background-color: #7bbd12;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.hist-button:hover {
+  background-color: #60920F;
+}
+
 .input-element-root {
   height: 58px;
 }
@@ -238,7 +248,7 @@
 
 .table-container {
   width: 100%;
-  max-width: calc(100vw - 20px);
+  max-width: calc(100vw - 35px);
   margin-left: 10px;
   margin-right: 10px;
   background-color: #fff;
@@ -356,7 +366,7 @@
   }
 
   .card-buttons {
-    min-width: 260px;
+    min-width: 300px;
     flex-direction: row;
     justify-content: space-evenly;
   }

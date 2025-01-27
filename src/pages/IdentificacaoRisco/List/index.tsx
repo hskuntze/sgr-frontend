@@ -69,7 +69,7 @@ const IdentificacaoRiscoList = () => {
       (c.contrato.toLowerCase().includes(searchTerm) ?? false) ||
       (c.tipoRisco.toLowerCase().includes(searchTerm) ?? false) ||
       (c.risco.toLowerCase().includes(searchTerm) ?? false) ||
-      (c.conjunto.toLowerCase().includes(searchTerm) ?? false) ||
+      (c.conjunto.nome.toLowerCase().includes(searchTerm) ?? false) ||
       (c.evento.toLowerCase().includes(searchTerm) ?? false) ||
       (c.descricaoRisco.toLowerCase().includes(searchTerm) ?? false)
     );
@@ -83,12 +83,12 @@ const IdentificacaoRiscoList = () => {
   const handleExportToExcel = () => {
     if (filteredData) {
       const irsProcessados = filteredData.map((t) => ({
-        ID: t.id,
+        ID: String(t.id),
         Projeto: t.projeto,
         Contrato: t.contrato,
         "Tipo de Risco": t.tipoRisco,
         Risco: t.risco,
-        Conjunto: t.conjunto,
+        Conjunto: t.conjunto.nome,
         Evento: t.evento,
         "Descrição do risco": t.descricaoRisco,
         Causa: t.causa,
@@ -105,11 +105,13 @@ const IdentificacaoRiscoList = () => {
         "Impacto Financeiro": t.impactoFinanceiro,
         "Planos de Contingência": t.planoContingencia,
         "Responsável pelo Risco": t.responsavelRisco,
-        "Responsável pelo Conjunto": t.responsavelConjunto,
+        "Responsável pelo Conjunto": t.conjunto.responsavelConjunto.nome,
         Status: t.status,
       }));
 
       const ws = XLSX.utils.json_to_sheet(irsProcessados);
+      ws["!rows"] = [{ hpx: 16 }];
+
       const wb = XLSX.utils.book_new();
 
       XLSX.utils.book_append_sheet(wb, ws, "Identificação de Riscos");
@@ -132,16 +134,15 @@ const IdentificacaoRiscoList = () => {
 
     filteredData?.forEach((b, i) => {
       doc.setFont("helvetica", "bold");
-      doc.text(b.id, marginLeft, y);
+      doc.text("ID " + String(b.id), marginLeft, y);
       y += lineHeight;
 
       const data = [
-        ["ID", b.id],
         ["Projeto", b.projeto],
         ["Contrato", b.contrato],
         ["Tipo de Risco", b.tipoRisco],
         ["Risco: CONTRATUAL/PROJETO", b.risco],
-        ["Conjunto", b.conjunto],
+        ["Conjunto", b.conjunto.nome],
         ["Evento (Descrição completa)", b.evento],
         ["Descrição do Risco", b.descricaoRisco],
         ["Causa", b.causa],
@@ -157,7 +158,7 @@ const IdentificacaoRiscoList = () => {
         ["Impacto Financeiro", b.impactoFinanceiro ?? "-"],
         ["Planos de Contingência", b.planoContingencia ?? "-"],
         ["Responsável pelo Risco", b.responsavelRisco],
-        ["Responsável pelo Conjunto", b.responsavelConjunto],
+        ["Responsável pelo Conjunto", b.conjunto.responsavelConjunto.nome],
         ["Status", b.status],
       ];
 
@@ -251,7 +252,11 @@ const IdentificacaoRiscoList = () => {
             <tbody className="table-body">
               {paginatedData.length > 0 ? (
                 paginatedData.map((t) => (
-                  <IdentificacaoRiscoCard onLoad={loadInfo} key={t.id} element={t} />
+                  <IdentificacaoRiscoCard
+                    onLoad={loadInfo}
+                    key={t.id}
+                    element={t}
+                  />
                 ))
               ) : (
                 <tr>

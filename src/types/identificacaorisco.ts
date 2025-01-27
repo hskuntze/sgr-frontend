@@ -1,10 +1,13 @@
+import { Conjunto } from "./conjunto";
+
 export type IdentificacaoRiscoType = {
   id: string;
   projeto: string;
+  identificadoPor: string;
   contrato: string;
   tipoRisco: string;
   risco: string;
-  conjunto: string;
+  conjunto: Conjunto;
   evento: string;
   descricaoRisco: string;
   causa: string;
@@ -21,6 +24,5 @@ export type IdentificacaoRiscoType = {
   impactoFinanceiro: string;
   planoContingencia: string;
   responsavelRisco: string;
-  responsavelConjunto: string;
   status: string;
 };

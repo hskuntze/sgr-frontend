@@ -62,7 +62,7 @@ const IdentificacaoRiscoInspect = () => {
               <b>Risco: CONTRATUAL/PROJETO </b> {identificacaoRisco?.risco}
             </span>
             <span>
-              <b>Conjunto: </b> {identificacaoRisco?.conjunto}
+              <b>Conjunto: </b> {identificacaoRisco?.conjunto.nome}
             </span>
             <span>
               <b>Evento: </b> {identificacaoRisco?.evento}
@@ -120,7 +120,7 @@ const IdentificacaoRiscoInspect = () => {
             </span>
             <span>
               <b>Responsável pelo Conjunto: </b>{" "}
-              {identificacaoRisco?.responsavelConjunto}
+              {identificacaoRisco?.conjunto.responsavelConjunto.nome}
             </span>
             <span>
               <b>Status: </b> {identificacaoRisco?.status}
